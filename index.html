@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Instructiuni Alternative C/C++</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #8360c3, #2ebf91);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+
+        .question {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .question h3 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .good {
+            color: green;
+        }
+
+        .medium {
+            color: orange;
+        }
+
+        .bad {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Quiz - Instructiuni Alternative C/C++</h1>
+
+    <form id="quizForm">
+
+        <!-- Intrebarea 1 -->
+        <div class="question">
+            <h3>1. Ce instructiune este folosita pentru verificarea unei conditii in C/C++?</h3>
+
+            <label><input type="radio" name="q1" value="1"> if</label>
+            <label><input type="radio" name="q1" value="0"> for</label>
+            <label><input type="radio" name="q1" value="0"> while</label>
+        </div>
+
+        <!-- Intrebarea 2 -->
+        <div class="question">
+            <h3>2. Ce instructiune permite alegerea intre mai multe cazuri?</h3>
+
+            <label><input type="radio" name="q2" value="0"> if</label>
+            <label><input type="radio" name="q2" value="1"> switch</label>
+            <label><input type="radio" name="q2" value="0"> do while</label>
+        </div>
+
+        <!-- Intrebarea 3 -->
+        <div class="question">
+            <h3>3. Ce instructiune alternativa se foloseste dupa if?</h3>
+
+            <label><input type="radio" name="q3" value="0"> case</label>
+            <label><input type="radio" name="q3" value="1"> else</label>
+            <label><input type="radio" name="q3" value="0"> break</label>
+        </div>
+
+        <!-- Intrebarea 4 -->
+        <div class="question">
+            <h3>4. Ce cuvant cheie este utilizat in interiorul instructiunii switch?</h3>
+
+            <label><input type="radio" name="q4" value="0"> while</label>
+            <label><input type="radio" name="q4" value="0"> continue</label>
+            <label><input type="radio" name="q4" value="1"> case</label>
+        </div>
+
+        <!-- Intrebarea 5 -->
+        <div class="question">
+            <h3>5. Ce instructiune opreste executia unui caz din switch?</h3>
+
+            <label><input type="radio" name="q5" value="1"> break</label>
+            <label><input type="radio" name="q5" value="0"> stop</label>
+            <label><input type="radio" name="q5" value="0"> exit</label>
+        </div>
+
+        <!-- Intrebarea 6 -->
+        <div class="question">
+            <h3>6. Care este forma corecta a unei instructiuni alternative complete?</h3>
+
+            <label><input type="radio" name="q6" value="0"> for - else</label>
+            <label><input type="radio" name="q6" value="1"> if - else</label>
+            <label><input type="radio" name="q6" value="0"> switch - while</label>
+        </div>
+
+        <button type="button" onclick="checkQuiz()">
+            Verifica raspunsurile
+        </button>
+
+    </form>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+
+    function checkQuiz() {
+
+        let score = 0;
+
+        const answers = document.querySelectorAll('input[type="radio"]:checked');
+
+        answers.forEach(answer => {
+            score += Number(answer.value);
+        });
+
+        const totalQuestions = 6;
+
+        let result = `Ai obtinut ${score} din ${totalQuestions} puncte!`;
+
+        if(score === totalQuestions) {
+            result += "<br><span class='good'>Excelent! Stapanesti instructiunile alternative!</span>";
+        }
+        else if(score >= 4) {
+            result += "<br><span class='medium'>Foarte bine! Mai exerseaza putin.</span>";
+        }
+        else {
+            result += "<br><span class='bad'>Mai studiaza instructiunile alternative din C/C++.</span>";
+        }
+
+        document.getElementById("result").innerHTML = result;
+    }
+
+</script>
+
+</body>
+</html>
